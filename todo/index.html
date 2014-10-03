@@ -18,9 +18,11 @@
   </head>
   <body>
     <div ng-app class="container">
+      <div class="page-header">
       <h1>Todo List</h1>
-      <p class="well">Add items to the list below and mark them as complete 
+      <p class="lead">Add items to the list below and mark them as complete 
         when they are done.</p>
+      </div>
       <form class="form-inline" role="form">
         <div class="form-group">
           <label for="newItem">What do you need to do?</label>
@@ -32,14 +34,14 @@
       <div class="row">
         <div class="col-md-6">
           <h2>Do these</h2>
-          <ul>
-            <li>New item</li>
+          <ul class="list-group">
+            <li class="list-group-item">New item</li>
           </ul>
         </div>
         <div class="col-md-6">
           <h2>Completed items</h2>
-          <ul>
-            <li><del>Completed item</del></li>
+          <ul class="list-group">
+            <li class="list-group-item"><del>Completed item</del></li>
           </ul>
         </div>
 
