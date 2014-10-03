@@ -17,11 +17,14 @@
     <![endif]-->
   </head>
   <body>
-    <div ng-app>
-      
-      
-
-
+    <div ng-app class="container">
+      <h1>Hello World</h1>      
+      <div class="form-group">
+        <label for="name">Enter your name</label>
+        <input type="text" ng-model="user.name" id="name" class="form-control" >
+      </div>
+        
+      <p>Greetings {{user.name}}! I hope you have a fabulous day!</p>
 
     </div>
     <!-- /ng-app -->
