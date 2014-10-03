@@ -17,37 +17,41 @@
     <![endif]-->
   </head>
   <body>
-    <div ng-app class="container">
-      <div class="page-header">
-      <h1>Todo List</h1>
-      <p class="lead">Add items to the list below and mark them as complete 
-        when they are done.</p>
+    <div ng-app="todoApp" class="container">
+  
+      <div ng-controller="TodoCtrl">
+
+        <div class="page-header">
+          <h1>Todo List</h1>
+          <p class="lead">Add items to the list below and mark them as complete 
+            when they are done.</p>
+        </div>
+        <form class="form-inline" role="form">
+          <div class="form-group">
+            <label for="newItem">What do you need to do?</label>
+            <input type="text" id="newItem" class="form-control" ng-model="newTodo">
+          </div>
+          <button type="submit" class="btn btn-default" ng-click="todoApp.addTodo('Wash car')">Add</button>
+        </form>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <h2>Do these</h2>
+            <todo-list todos="todos" class="pending">
+          </div>
+          <div class="col-md-6">
+            <h2>Completed items</h2>
+            <todo-list todos="todos" class="complete">
+          </div>
+
+        </div> 
+
+        <footer>
+          <h4>{{ todos.length }} todo items. <small>{{ todos.length }} complete. {{ todos.length }} pending.</h4>
+        </footer>
+
       </div>
-      <form class="form-inline" role="form">
-        <div class="form-group">
-          <label for="newItem">What do you need to do?</label>
-          <input type="text" id="newItem" class="form-control" placeholder="New todo item" >
-        </div>
-        <button type="submit" class="btn btn-default">Add</button>
-      </form>
-      
-      <div class="row">
-        <div class="col-md-6">
-          <h2>Do these</h2>
-          <ul class="list-group">
-            <li class="list-group-item">New item</li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <h2>Completed items</h2>
-          <ul class="list-group">
-            <li class="list-group-item"><del>Completed item</del></li>
-          </ul>
-        </div>
-
-      </div> 
-
-
+      <!-- /TodoCtrl -->
 
     </div>
     <!-- /ng-app -->
