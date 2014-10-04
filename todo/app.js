@@ -7,7 +7,10 @@ var todoApp = angular.module('todoApp', []);
 todoApp.controller('TodoCtrl', function($scope) {
 
     // Start with an empty list of todos
-    $scope.todos = [ ];
+    $scope.todos = [ 
+        { name: 'Pending Item', completed: false }, 
+        { name: 'Complete Item', completed: true } 
+    ];
 
     this.addTodo = function() {
         // Add a new item, and automatically mark it as incomplete
@@ -24,8 +27,9 @@ todoApp.controller('TodoCtrl', function($scope) {
 /**
  * todoList (Directive)
  * A list of either complete or incomplete todo items.
+ * filterFilter :   To be used for filtering arrays
  */
-todoApp.directive('todoList', function() {
+todoApp.directive('todoList', ['filterFilter', function(filterFilter) {
     return {
         restrict: 'E',
         templateUrl: 'todo-list.html',
@@ -34,14 +38,20 @@ todoApp.directive('todoList', function() {
         },
         link: function (scope, element, attrs) {
             // attrs.display will be either 'pending' or 'complete'
-            console.log(attrs.display); 
+            //console.log(attrs.display); 
+            //console.log(filterFilter(scope.todos, { completed: true }));
 
-            // Use example from https://docs.angularjs.org/guide/filter and
-            // 'filter' Filter here: https://docs.angularjs.org/api/ng/filter/filter
+            if ('pending' == attrs.display) {
+                scope.filteredTodos = filterFilter(scope.todos, { completed: false });
+            } else if ('complete' == attrs.display) {
+                scope.filteredTodos = filterFilter(scope.todos, { completed: true });
+            } else {
+                scope.filteredTodos = scope.todos;
+            }    
         }
     };
 
-});
+}]);
 
 /**
  * todoItem (Directive)
