@@ -31,6 +31,13 @@ todoApp.directive('todoList', function() {
         templateUrl: 'todo-list.html',
         scope: {
             todos: '='
+        },
+        link: function (scope, element, attrs) {
+            // attrs.display will be either 'pending' or 'complete'
+            console.log(attrs.display); 
+
+            // Use example from https://docs.angularjs.org/guide/filter and
+            // 'filter' Filter here: https://docs.angularjs.org/api/ng/filter/filter
         }
     };
 
