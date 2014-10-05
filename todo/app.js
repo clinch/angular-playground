@@ -38,9 +38,8 @@ todoApp.directive('todoList', ['filterFilter', function(filterFilter) {
         },
         link: function (scope, element, attrs) {
             // attrs.display will be either 'pending' or 'complete'
-            //console.log(attrs.display); 
-            //console.log(filterFilter(scope.todos, { completed: true }));
-
+            // Use this attribute to show either pending or completed todos. Missing
+            // params will include ALL todos by default.
             if ('pending' == attrs.display) {
                 scope.filteredTodos = filterFilter(scope.todos, { completed: false });
             } else if ('complete' == attrs.display) {
