@@ -36,7 +36,14 @@ todoApp.directive('todoList', ['filterFilter', function(filterFilter) {
         scope: {
             todos: '='
         },
+        controller: function($scope) {
+            // WHY DOESN'T THIS WORK??
+            $scope.$watch('todos', function() { console.log("Changed!" + $scope.todos) });
+        },
         link: function (scope, element, attrs) {
+            // WHY DOESN'T THIS WORK??
+            scope.$watch('todos', function() { console.log("Changed 2!" + scope.todos) });
+
             // attrs.display will be either 'pending' or 'complete'
             // Use this attribute to show either pending or completed todos. Missing
             // params will include ALL todos by default.
@@ -47,6 +54,7 @@ todoApp.directive('todoList', ['filterFilter', function(filterFilter) {
             } else {
                 scope.filteredTodos = scope.todos;
             }    
+
         }
     };
 
