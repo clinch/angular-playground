@@ -36,27 +36,31 @@ todoApp.directive('todoList', ['filterFilter', function(filterFilter) {
         scope: {
             todos: '='
         },
-        controller: function($scope) {
-            // WHY DOESN'T THIS WORK??
-            $scope.$watch('todos', function() { console.log("Changed!" + $scope.todos) });
-        },
         link: function (scope, element, attrs) {
-            // WHY DOESN'T THIS WORK??
-            scope.$watch('todos', function() { console.log("Changed 2!" + scope.todos) });
+            // It's important to watch the 'length' property of the array
+            // rather than the entire array. 
+            scope.$watch('todos.length', function() {
+                // todos has changed. Regenerate filteredArray.    
+                scope.applyFilter();
+            });
 
-            // attrs.display will be either 'pending' or 'complete'
-            // Use this attribute to show either pending or completed todos. Missing
-            // params will include ALL todos by default.
-            if ('pending' == attrs.display) {
-                scope.filteredTodos = filterFilter(scope.todos, { completed: false });
-            } else if ('complete' == attrs.display) {
-                scope.filteredTodos = filterFilter(scope.todos, { completed: true });
-            } else {
-                scope.filteredTodos = scope.todos;
-            }    
+            scope.applyFilter = function() {
+                // attrs.display will be either 'pending' or 'complete'
+                // Use this attribute to show either pending or completed todos. Missing
+                // params will include ALL todos by default.
+                if ('pending' == attrs.display) {
+                    scope.filteredTodos = filterFilter(scope.todos, { completed: false });
+                } else if ('complete' == attrs.display) {
+                    scope.filteredTodos = filterFilter(scope.todos, { completed: true });
+                } else {
+                    scope.filteredTodos = scope.todos;
+                }    
+            }
 
         }
     };
+
+    
 
 }]);
 
