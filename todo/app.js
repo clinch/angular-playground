@@ -7,10 +7,7 @@ var todoApp = angular.module('todoApp', []);
 todoApp.controller('TodoCtrl', function($scope) {
 
     // Start with an empty list of todos
-    $scope.todos = [ 
-        { name: 'Pending Item', completed: false }, 
-        { name: 'Complete Item', completed: true } 
-    ];
+    $scope.todos = [  ];
 
     this.addTodo = function() {
         // Add a new item, and automatically mark it as incomplete
