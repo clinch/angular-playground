@@ -17,8 +17,6 @@ todoApp.controller('TodoCtrl', function($scope) {
         $scope.newTodo = '';
     }
 
-    $scope.word = function() { alert ("Word!"); };
-
     // Make a reference to ourself to make calling methods easier
     $scope.todoApp = this;
 });
@@ -83,10 +81,7 @@ todoApp.directive('todoItem', function() {
             todo: "="
         },
         link: function(scope) {
-            scope.word = function() { 
-                console.log(scope.todo); // For debugging
-                scope.todo.completed = true;
-            } 
+
         }
     };
 });
