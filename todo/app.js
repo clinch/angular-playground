@@ -17,6 +17,8 @@ todoApp.controller('TodoCtrl', function($scope) {
         $scope.newTodo = '';
     }
 
+    $scope.word = function() { alert ("Word!"); };
+
     // Make a reference to ourself to make calling methods easier
     $scope.todoApp = this;
 });
@@ -36,10 +38,16 @@ todoApp.directive('todoList', ['filterFilter', function(filterFilter) {
         link: function (scope, element, attrs) {
             // It's important to watch the 'length' property of the array
             // rather than the entire array. 
-            scope.$watch('todos.length', function() {
-                // todos has changed. Regenerate filteredArray.    
-                scope.applyFilter();
-            });
+            scope.$watch('todos', 
+                function() {
+                    // todos has changed. Regenerate filteredArray.    
+                    scope.applyFilter();
+                }, 
+                // We set the 'deep' flag to search every element for changes. 
+                // This is slightly inefficient, and may eventually need to be 
+                // refactored for efficiency
+                true
+            );
 
             scope.applyFilter = function() {
                 // attrs.display will be either 'pending' or 'complete'
@@ -70,6 +78,15 @@ todoApp.directive('todoItem', function() {
     return {
         restrict: 'A',
         templateUrl: 'todo-item.html',
-        transclude: true
+        transclude: true,
+        scope: {
+            todo: "="
+        },
+        link: function(scope) {
+            scope.word = function() { 
+                console.log(scope.todo); // For debugging
+                scope.todo.completed = true;
+            } 
+        }
     };
 });
