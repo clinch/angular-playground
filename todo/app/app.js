@@ -10,6 +10,9 @@ todoApp.controller('TodoCtrl', function($scope) {
     $scope.todos = [  ];
 
     this.addTodo = function() {
+	// If there's no item, then don't add it
+	if ($scope.newTodo == '') return;
+
         // Add a new item, and automatically mark it as incomplete
         $scope.todos.push({name: $scope.newTodo, completed: false});
         
