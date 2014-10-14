@@ -33,4 +33,10 @@ describe('Unit: TodoCtrl', function() {
     scope.todoApp.addTodo();
     expect(scope.todos.length).toEqual(0);
   });
+
+  it('should default to incomplete todos when adding', function() {
+    scope.newTodo = 'Incomplete';
+    scope.todoApp.addTodo();
+    expect(scope.todos[scope.todos.length - 1].completed).toBe(false);
+  });
 });
