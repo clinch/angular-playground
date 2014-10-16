@@ -1,7 +1,7 @@
 todo
 ==================
 
-This is a simple todo list written in Angular.
+This is a simple todo list written in Angular. Use app here: http://clinch.github.io/angular-playground/todo/app/
 
 The key features in the HTML markup are:
 
