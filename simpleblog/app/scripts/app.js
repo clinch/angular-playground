@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name simpleblogApp
+ * @name simpleBlogApp
  * @description
- * # simpleblogApp
+ * # simpleBlogApp
  *
  * Main module of the application.
  */
 angular
-  .module('simpleblogApp', [
+  .module('simpleBlogApp', [
     'ngRoute'
   ])
   .config(function ($routeProvider) {
