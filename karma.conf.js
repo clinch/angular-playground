@@ -20,7 +20,8 @@ module.exports = function(config) {
       'todo/test/**/*Spec.js'
     ],
 
-    plugins : ['karma-jasmine', 'karma-phantomjs-launcher'],
+    plugins : ['karma-phantomjs-launcher',
+                'karma-jasmine'],
 
     // list of files to exclude
     exclude: [

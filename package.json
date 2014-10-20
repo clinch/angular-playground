@@ -7,9 +7,9 @@
   "version": "0.0.1",
   "dependencies": {},
   "devDependencies": {
-    "karma": ">=0.12",
-    "karma-jasmine": ">=0.1.5",
-    "karma-phantomjs-launcher": "~0.1"
+    "karma": "^0.12.24",
+    "karma-jasmine": "^0.1.5",
+    "karma-phantomjs-launcher": "^0.1.4"
   },
   "engines": {
     "node": ">=0.10.0"
