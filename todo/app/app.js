@@ -28,8 +28,11 @@ todoApp.controller('TodoCtrl', ['$scope', 'filterFilter', function($scope, filte
         // Clear the todo for the next one
         $scope.newTodo = '';
 
-        // This only updates on new items
-        this.updateSummary();
+        // Watch all the items to update summaries when one has changed
+        $scope.$watch('todos', function() {
+            $scope.todoApp.updateSummary();
+        }, true);
+        
     }
 
     /**
