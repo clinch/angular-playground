@@ -49,7 +49,7 @@
         <todo-list todos="todos" ></todo-list>
 
         <footer>
-          <h4>{{ todos.length }} todo items. <small>{{ todos.length }} complete. {{ todos.length }} pending.</small></h4>
+          <h4>{{ todos.length }} todo items. <small>{{ todoApp.numComplete }} complete. {{ todoApp.numPending }} pending.</small></h4>
         </footer>
 
       </div>
@@ -64,7 +64,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <!-- AngularJS for all things awesome -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-
+    
     <!-- Now include your app. -->
     <script src="app.js"></script>
   </body>

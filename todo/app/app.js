@@ -4,11 +4,20 @@ var todoApp = angular.module('todoApp', []);
  * TodoCrtl
  * Main controller for the Todo List app/view
  */
-todoApp.controller('TodoCtrl', function($scope) {
+todoApp.controller('TodoCtrl', ['$scope', 'filterFilter', function($scope, filterFilter) {
 
     // Start with an empty list of todos
     $scope.todos = [  ];
 
+    // numComplete should always equal $scope.todos - numPending
+    this.numComplete = 0;
+    this.numPending = 0;
+
+    /**
+     * addTodo
+     * This is used to add new todos to our list. It will use the string 
+     * contained in $scope.newTodo and set it to pending.
+     */
     this.addTodo = function() {
 	// If there's no item, then don't add it
 	if ($scope.newTodo == '') return;
@@ -18,11 +27,25 @@ todoApp.controller('TodoCtrl', function($scope) {
         
         // Clear the todo for the next one
         $scope.newTodo = '';
+
+        // This only updates on new items
+        this.updateSummary();
     }
 
+    /**
+     * updateSummary
+     * Used when our list of todos has changed and we need to update the 
+     * total number of complete and pending todos.
+     */
+    this.updateSummary = function() {
+        this.numPending = filterFilter($scope.todos, { completed: false }).length;
+        this.numComplete = $scope.todos.length - this.numPending;
+    }
+    
+   
     // Make a reference to ourself to make calling methods easier
     $scope.todoApp = this;
-});
+}]);
 
 /**
  * todoList (Directive)
