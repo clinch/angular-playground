@@ -44,20 +44,20 @@ describe('Unit: TodoCtrl', function() {
   it ('should add a new item and list it as pending', function() {
     scope.newTodo = 'First';
     scope.todoApp.addTodo();
-    expect(scope.todoApp.numComplete.toEqual(0));
-    expect(scope.todoApp.numPending.toEqual(1));
+    expect(scope.todoApp.numComplete).toEqual(0);
+    expect(scope.todoApp.numPending).toEqual(1);
     scope.newTodo = 'Second';
-    expect(scope.todoApp.numComplete.toEqual(0));
-    expect(scope.todoApp.numPending.toEqual(2));    
+    expect(scope.todoApp.numComplete).toEqual(0);
+    expect(scope.todoApp.numPending).toEqual(2);    
   });
 
-  it ('should update pending and complete totals when item marked as complete', function()) {
+  it ('should update pending and complete totals when item marked as complete', function() {
     scope.newTodo = 'Switch Me';
     scope.todoApp.addTodo();
-    expect(scope.todoApp.numComplete.toEqual(0));
-    expect(scope.todoApp.numPending.toEqual(1));
+    expect(scope.todoApp.numComplete).toEqual(0);
+    expect(scope.todoApp.numPending).toEqual(1);
     scope.todos[0].complete = true;
-    expect(scope.todoApp.numComplete.toEqual(1));
-    expect(scope.todoApp.numPending.toEqual(0));
-  }
+    expect(scope.todoApp.numComplete).toEqual(1);
+    expect(scope.todoApp.numPending).toEqual(0);
+  });
 });

@@ -13,6 +13,11 @@ todoApp.controller('TodoCtrl', ['$scope', 'filterFilter', function($scope, filte
     this.numComplete = 0;
     this.numPending = 0;
 
+    // Watch all the items to update summaries when one has changed
+    $scope.$watch('todos', function() {
+        $scope.todoApp.updateSummary();
+    }, true);
+        
     /**
      * addTodo
      * This is used to add new todos to our list. It will use the string 
@@ -27,12 +32,6 @@ todoApp.controller('TodoCtrl', ['$scope', 'filterFilter', function($scope, filte
         
         // Clear the todo for the next one
         $scope.newTodo = '';
-
-        // Watch all the items to update summaries when one has changed
-        $scope.$watch('todos', function() {
-            $scope.todoApp.updateSummary();
-        }, true);
-        
     }
 
     /**
