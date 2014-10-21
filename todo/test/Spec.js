@@ -44,9 +44,13 @@ describe('Unit: TodoCtrl', function() {
   it ('should add a new item and list it as pending', function() {
     scope.newTodo = 'First';
     scope.todoApp.addTodo();
+    // We must run the digest now. So apply manually.
+    scope.$apply();
     expect(scope.todoApp.numComplete).toEqual(0);
     expect(scope.todoApp.numPending).toEqual(1);
     scope.newTodo = 'Second';
+    scope.todoApp.addTodo();
+    scope.$apply();
     expect(scope.todoApp.numComplete).toEqual(0);
     expect(scope.todoApp.numPending).toEqual(2);    
   });
@@ -54,9 +58,12 @@ describe('Unit: TodoCtrl', function() {
   it ('should update pending and complete totals when item marked as complete', function() {
     scope.newTodo = 'Switch Me';
     scope.todoApp.addTodo();
+    scope.$apply();
     expect(scope.todoApp.numComplete).toEqual(0);
     expect(scope.todoApp.numPending).toEqual(1);
-    scope.todos[0].complete = true;
+
+    scope.todos[scope.todos.length - 1].completed = true;
+    scope.$apply();
     expect(scope.todoApp.numComplete).toEqual(1);
     expect(scope.todoApp.numPending).toEqual(0);
   });
