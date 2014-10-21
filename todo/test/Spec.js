@@ -39,4 +39,25 @@ describe('Unit: TodoCtrl', function() {
     scope.todoApp.addTodo();
     expect(scope.todos[scope.todos.length - 1].completed).toBe(false);
   });
+
+  // Testing the summary features in footer
+  it ('should add a new item and list it as pending', function() {
+    scope.newTodo = 'First';
+    scope.todoApp.addTodo();
+    expect(scope.todoApp.numComplete.toEqual(0));
+    expect(scope.todoApp.numPending.toEqual(1));
+    scope.newTodo = 'Second';
+    expect(scope.todoApp.numComplete.toEqual(0));
+    expect(scope.todoApp.numPending.toEqual(2));    
+  });
+
+  it ('should update pending and complete totals when item marked as complete', function()) {
+    scope.newTodo = 'Switch Me';
+    scope.todoApp.addTodo();
+    expect(scope.todoApp.numComplete.toEqual(0));
+    expect(scope.todoApp.numPending.toEqual(1));
+    scope.todos[0].complete = true;
+    expect(scope.todoApp.numComplete.toEqual(1));
+    expect(scope.todoApp.numPending.toEqual(0));
+  }
 });
