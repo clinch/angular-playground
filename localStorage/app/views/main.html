@@ -1,0 +1,17 @@
+<p class="lead">After setting a value to be sotred in local storage, refresh this 
+  page and your value should persist.</p>
+<div class="row marketing">
+  <h4>What would you like to store?</h4>
+  <p>
+    <form class="form-inline" role="form">
+      <div class="form-group">
+        <input type="text" id="newDataItem" class="form-control" ng-model="dataItem"></input>
+      </div>
+      <button type="submit" class="btn btn-default" ng-click="MainCtrl.updateData(dataItem)">Add</button>
+    </form>    
+  </p>
+
+  <h4>Current value</h4>
+  <p>{{ storedData }}</p>
+
+</div>
