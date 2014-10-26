@@ -16,7 +16,13 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('should save new data after updating', function () {
+    scope.MainCtrl.updateData('Test');
+    expect(scope.storedData).toBe('Test');
   });
+
+  it('should have something in data after storage', function () {
+    expect(scope.storedData).toBeDefined();
+  });
+
 });
