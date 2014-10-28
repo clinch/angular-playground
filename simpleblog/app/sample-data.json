@@ -1,0 +1,16 @@
+{
+  "articles": [
+    {
+      "title": "The first article",
+      "slug": "the-first-article",
+      "published": 1388578331,
+      "body": "This is the markdown body of the first article."
+    },
+    {
+      "title": "Two Articles Awesome!",
+      "slug": "two-articles-awesome",
+      "published": 1393910711,
+      "body": "This is the markdown body of the first article."
+    }
+  ]
+}
